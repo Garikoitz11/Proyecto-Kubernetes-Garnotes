@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-ldap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: ldap-web
+  template:
+    metadata:
+      labels:
+        component: ldap-web
+    spec:
+      volumes:
+        - name: vol-ldap-datos
+          persistentVolumeClaim:
+            claimName: reclamacion-vp-ldap-datos
+        - name: vol-ldap-conf
+          persistentVolumeClaim:
+            claimName: reclamacion-vp-ldap-conf
+      containers:
+      - name: pod-ldap
+        image: garikoitz11/servidor-ldap
+        ports:
+        - containerPort: 389
+        volumeMounts:
+          - name: vol-ldap-datos
+            mountPath: /var/lib/ldap
+          - name: vol-ldap-conf
+            mountPath: /etc/ldap/slapd.d
+        

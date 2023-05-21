@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-crate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: crate-web
+  template:
+    metadata:
+      labels:
+        component: crate-web
+    spec:
+      volumes:
+        - name: crate-volumen
+          persistentVolumeClaim:
+            claimName: reclamacion-vp-crate
+      containers:
+      - name: pod-crate
+        image: crate
+        ports:
+        - containerPort: 4200
+        env:
+        - name: CRATE_HEAP_SIZE
+          value: "1g"
+        volumeMounts:
+          - name: crate-volumen
+            mountPath: /var/lib/crate/data
+            subPath: crate
