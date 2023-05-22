@@ -20,6 +20,10 @@ Proyecto realizado para la asignatura Administración de Sistemas. Es una aplica
   - ```$ kubectl apply -f clusterip-crate.yml```
 - Ejecutar el LoadBalancer para exponer el puerto de la aplicación web al exterior del clúster:
   - ```$ kubectl apply -f loadbalancer.yml```
+- Opcionalmente, ya que no es obligatorio para el funcionamiento, ejecutaremos los Autoescaladores Horizontales de Pods para crear distintos Pods según la demanda de usuarios y así asegurar el buen funcionamiento de la aplicación:
+  - ```$ kubectl apply -f horizontal-autoscaling-ldap.yml```
+  - ```$ kubectl apply -f horizontal-autoscaling-crate.yml```
+  - ```$ kubectl apply -f horizontal-autoscaling-web.yml```
 ## Funcionamiento
 La aplicación está desarrollada en el Framework Flask y tiene un Login y un Registro accesible para cualquier usuario, en el que al iniciar sesión o registrarse la aplicación se conecta con el servidor LDAP creado e inserta o consulta, en función de lo elegido por el usuario, en la unidad organizativa "usuarios" (ou=usuarios) de "garnotes.com" (dc=garnotes, dc=com).
 
