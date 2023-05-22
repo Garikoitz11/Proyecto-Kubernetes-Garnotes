@@ -9,11 +9,11 @@ spec:
     kind: Deployment
     name: deployment-crate
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 7
   metrics:
   - type: Resource
     resource:
       name: memory
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: 60

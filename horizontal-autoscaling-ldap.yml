@@ -9,11 +9,11 @@ spec:
     kind: Deployment
     name: deployment-ldap
   minReplicas: 1
-  maxReplicas: 7
+  maxReplicas: 5
   metrics:
   - type: Resource
     resource:
       name: memory
       target:
         type: Utilization
-        averageUtilization: 60
+        averageUtilization: 70
