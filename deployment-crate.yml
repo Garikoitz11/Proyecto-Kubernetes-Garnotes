@@ -24,6 +24,8 @@ spec:
         env:
         - name: CRATE_HEAP_SIZE
           value: "1g"
+        args:
+          - "-Cnode.store.allow_mmap=false"
         volumeMounts:
           - name: crate-volumen
             mountPath: /var/lib/crate/data

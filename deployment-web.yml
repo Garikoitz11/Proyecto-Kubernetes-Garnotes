@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: pod-web
-          image: garikoitz11/flask-notas
+          image: garikoitz11/kubernetes-flask
           ports:
             - containerPort: 5000
