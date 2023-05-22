@@ -21,7 +21,7 @@ Proyecto realizado para la asignatura Administración de Sistemas. Es una aplica
 - Ejecutar el load balancer para exponer el puerto de la aplicación web al exterior del cluster:
   - ```$ kubectl apply -f loadbalancer.yml```
 ## Funcionamiento
-La aplicación está desarrollada en el Framework Flask y tiene un Login y un Registro, accesible para cualquier usuario, en el que al iniciar sesión o registrarse, la aplicación se conecta con el servidor LDAP creado, e inserta o consulta, en función de lo elegido por el usuario, en la unidad organizativa "usuarios" (ou=usuarios) de garnotes.com (dc=garnotes, dc=com).
+La aplicación está desarrollada en el Framework Flask y tiene un Login y un Registro, accesible para cualquier usuario, en el que al iniciar sesión o registrarse, la aplicación se conecta con el servidor LDAP creado, e inserta o consulta, en función de lo elegido por el usuario, en la unidad organizativa "usuarios" (ou=usuarios) de "garnotes.com" (dc=garnotes, dc=com).
 
 Una vez ha iniciado sesión el usuario, la aplicación envia al usuario al apartado de notas, donde esta se conectará con CrateDB y seleccionará las notas del usuario en función de un identificador basado en el nombre de usuario LDAP. En caso de no coincidir el nombre de usuario y contraseña con un usuario existente aparecerá un mensaje de error.
 
