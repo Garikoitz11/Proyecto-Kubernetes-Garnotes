@@ -8,7 +8,7 @@ Proyecto realizado para la asignatura Administración de Sistemas. Es una aplica
 - Clonar el repositorio en el equipo: ```$ git clone <URL del repositorio> ```
 - Moverse dentro de la carpeta clonada: ```$ cd <nombre del repositorio>```
 - Ejecutar el script para el lanzamiento de la aplicación web: ```$ ./ejecutar.sh```
-#### El script internamente realiza los siguiente comandos (Es posible ejecutarlos uno a uno en vez de ejecutar el script):
+#### El script internamente realiza los siguiente comandos (Es posible ejecutarlos uno a uno en orden en vez de ejecutar el script):
 - Ejecutar la Reclamación de los Volúmenes Persistentes para la persistencia de los datos:
   - ```$ kubectl apply -f reclamacion-vp-ldap-datos.yml```
   - ```$ kubectl apply -f reclamacion-vp-ldap-conf.yml```
@@ -26,6 +26,9 @@ Proyecto realizado para la asignatura Administración de Sistemas. Es una aplica
   - ```$ kubectl apply -f horizontal-autoscaling-ldap.yml```
   - ```$ kubectl apply -f horizontal-autoscaling-crate.yml```
   - ```$ kubectl apply -f horizontal-autoscaling-web.yml```
+## Eliminación
+En caso de querer eliminar todos los objetos del cluster desplegados para el funcionamiento de la aplicación web ejecutar el siguiente comando:
+  - ```$ kubectl delete -f .```
 ## Funcionamiento
 La aplicación está desarrollada en el Framework Flask y tiene un Login y un Registro accesible para cualquier usuario, en el que al iniciar sesión o registrarse la aplicación se conecta con el servidor LDAP creado e inserta o consulta, en función de lo elegido por el usuario, en la unidad organizativa "usuarios" (ou=usuarios) de "garnotes.com" (dc=garnotes, dc=com).
 
